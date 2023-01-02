@@ -54,6 +54,8 @@ fun listProcesses(): Map<Int, ProcessDetailInfo> {
     for (i in 0 until size) {
         val pid = lines[i * 4 + 0].toInt()
         val title = lines[i * 4 + 1]
+        if (!title.contains("Unity"))
+            continue
         val path = lines[i * 4 + 2]
         val p = ProcessDetailInfo(pid, path, title)
         processMap[pid] = p
